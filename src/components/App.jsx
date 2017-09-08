@@ -1,10 +1,14 @@
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      video: window.exampleVideoData[0],
-      videos: window.exampleVideoData,
+      video: {},
+      videos: [],
     };
+  }
+
+  componentDidMount() {
+    this.props.searchYouTube({query: 'kittens', max: '5', key: window.YOUTUBE_API_KEY}, data => this.setState({videos: data, video: data[0]}));
   }
 
   onVideoClick(event) {
@@ -12,12 +16,17 @@ class App extends React.Component {
       video: event
     });
   }
+
+  onKey(event) {
+    this.props.searchYouTube({query: event, max: '5', key: window.YOUTUBE_API_KEY}, data => this.setState({videos: data, video: data[0]}));
+  }
+
   render() {
     return (
       <div>
           <nav className="navbar">
             <div className="col-md-6 offset-md-3">
-              <Search />
+              <Search onChange={(event) => this.onKey(event)} />
             </div>
           </nav>
           <div className="row">
