@@ -8,7 +8,8 @@ var searchYouTube = (options, callback) => {
       'part': 'snippet',
       'q': options.query,
       'type': 'video',
-      'videoEmbeddable': 'true'},
+      'videoEmbeddable': 'true',
+      'autoplay': options.autoplay},
     success: data => {
       console.log('youtube: Got the Data', data);
       callback(data.items);

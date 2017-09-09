@@ -4,6 +4,7 @@ class App extends React.Component {
     this.state = {
       video: {},
       videos: [],
+      autoplay: false,
     };
   }
 
@@ -16,7 +17,12 @@ class App extends React.Component {
       video: event
     });
   }
-
+  
+  onAutoPlayClick(event) {
+    this.setState({
+      autoplay: !this.state.autoplay
+    });
+  }
   onKey(event) {
     this.props.searchYouTube({query: event, max: '5', key: window.YOUTUBE_API_KEY}, data => this.setState({videos: data, video: data[0]}));
   }
@@ -31,7 +37,8 @@ class App extends React.Component {
           </nav>
           <div className="row">
             <div className="col-md-7">
-              <VideoPlayer video={this.state.video} />
+              <VideoPlayer video={this.state.video} autoplay={this.state.autoplay} />
+              <AutoPlay video={this.state.video} autoplay={this.state.autoplay} onAutoPlayClick={() => this.onAutoPlayClick()}/>
             </div>
             <div className="col-md-5">
               <VideoList videos={this.state.videos} onClick={(event) => this.onVideoClick(event)}/>

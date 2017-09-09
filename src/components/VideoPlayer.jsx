@@ -4,6 +4,7 @@ var VideoPlayer = props => {
   var videoID = ' ';
   var title = ' ';
   var description = ' ';
+  var autoplayurl = '?autoplay=' + (props.autoplay ? 1 : 0);
 
   if (props.video.id) {
     videoID = props.video.id.videoId;
@@ -17,7 +18,7 @@ var VideoPlayer = props => {
   return (
   <div className="video-player">
     <div className="embed-responsive embed-responsive-16by9">
-      <iframe className="embed-responsive-item" src={'https://www.youtube.com/embed/' + videoID} allowFullScreen></iframe>
+      <iframe className="embed-responsive-item" src={'https://www.youtube.com/embed/' + videoID + autoplayurl} allowFullScreen></iframe>
     </div>
     <div className="video-player-details">
       <h3>{title}</h3>
