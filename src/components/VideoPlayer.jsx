@@ -1,30 +1,30 @@
-var VideoPlayer = props => {
+var VideoPlayer = ({video, autoplay}) => {
 
   
-  var videoID = ' ';
-  var title = ' ';
-  var description = ' ';
-  var autoplayurl = '?autoplay=' + (props.autoplay ? 1 : 0);
+  let videoID = ' ';
+  let title = ' ';
+  let description = ' ';
+  let autoplayurl = '?autoplay=' + (autoplay ? 1 : 0);
 
-  if (props.video.id) {
-    videoID = props.video.id.videoId;
+  if (video.id) {
+    videoID = video.id.videoId;
   } 
 
-  if (props.video.snippet) {
-    title = props.video.snippet.title;
-    description = props.video.snippet.description;
+  if (video.snippet) {
+    title = video.snippet.title;
+    description = video.snippet.description;
   }
 
   return (
-  <div className="video-player">
-    <div className="embed-responsive embed-responsive-16by9">
-      <iframe className="embed-responsive-item" src={'https://www.youtube.com/embed/' + videoID + autoplayurl} allowFullScreen></iframe>
+    <div className="video-player">
+      <div className="embed-responsive embed-responsive-16by9">
+        <iframe className="embed-responsive-item" src={'https://www.youtube.com/embed/' + videoID + autoplayurl} allowFullScreen></iframe>
+      </div>
+      <div className="video-player-details">
+        <h3>{title}</h3>
+        <div>{description}</div>
+      </div>
     </div>
-    <div className="video-player-details">
-      <h3>{title}</h3>
-      <div>{description}</div>
-    </div>
-  </div>
   );
 };
 

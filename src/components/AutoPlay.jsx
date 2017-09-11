@@ -1,12 +1,12 @@
-var AutoPlay = props => {
+var AutoPlay = ({onAutoPlayClick, autoplay}) => {
 
   return (
-  <div className="video-player">
-    AUTOPLAY 
-    <button className="autoplaybutton" onClick={() => props.onAutoPlayClick()}>
-      {props.autoplay ? 'ON' : 'OFF'}
-    </button>
-  </div>
+    <div className="video-player">
+      AUTOPLAY 
+      <button className="autoplaybutton" onClick={() => onAutoPlayClick()}>
+        {autoplay ? 'ON' : 'OFF'}
+      </button>
+    </div>
   );
 };
 

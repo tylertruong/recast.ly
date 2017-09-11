@@ -1,18 +1,18 @@
-var searchYouTube = (options, callback) => {
+var searchYouTube = ({key, max, query}, callback) => {
   $.ajax({
     url: 'https://www.googleapis.com/youtube/v3/search',
     type: 'GET',
     data: {
-      'key': options.key, 
-      'maxResults': options.max,
+      'key': key, 
+      'maxResults': max,
       'part': 'snippet',
-      'q': options.query,
+      'q': query,
       'type': 'video',
-      'videoEmbeddable': 'true',
-      'autoplay': options.autoplay},
-    success: data => {
-      console.log('youtube: Got the Data', data);
-      callback(data.items);
+      'videoEmbeddable': 'true'
+    },
+    success: ({items}) => {
+      console.log('youtube: Got the Data', items);
+      callback(items);
     },
     error: function (data) {
       // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error

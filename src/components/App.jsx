@@ -30,21 +30,21 @@ class App extends React.Component {
   render() {
     return (
       <div>
-          <nav className="navbar">
-            <div className="col-md-6 offset-md-3">
-              <Search onChange={(event) => this.onKey(event)} />
-            </div>
-          </nav>
-          <div className="row">
-            <div className="col-md-7">
-              <VideoPlayer video={this.state.video} autoplay={this.state.autoplay} />
-              <AutoPlay video={this.state.video} autoplay={this.state.autoplay} onAutoPlayClick={() => this.onAutoPlayClick()}/>
-            </div>
-            <div className="col-md-5">
-              <VideoList videos={this.state.videos} onClick={(event) => this.onVideoClick(event)}/>
-            </div>
+        <nav className="navbar">
+          <div className="col-md-6 offset-md-3">
+            <Search onChange={(event) => this.onKey(event)} />
           </div>
-       </div>
+        </nav>
+        <div className="row">
+          <div className="col-md-7">
+            <VideoPlayer video={this.state.video} autoplay={this.state.autoplay} />
+            <AutoPlay video={this.state.video} autoplay={this.state.autoplay} onAutoPlayClick={() => this.onAutoPlayClick()}/>
+          </div>
+          <div className="col-md-5">
+            <VideoList videos={this.state.videos} onClick={event => this.onVideoClick(event)}/>
+          </div>
+        </div>
+      </div>
     );
   }
 }
